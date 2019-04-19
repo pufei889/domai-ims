@@ -73,6 +73,9 @@ class Msg{
 		}else if($this->message==""){
 			//主要信息为空，返回6
 			return 6;
+		}else if(preg_match('(((http|ftp|https):\/\/))',$this->message)){
+			//过滤内容中含有网址
+			return 9;	
 		}else{
 			//其它情况下，返回错误码0
 			return 0;

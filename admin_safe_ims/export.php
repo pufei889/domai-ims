@@ -26,7 +26,7 @@ if($_POST){
 	};
 	$start_time=strtotime($_POST["stime"]);
 	$end_time=strtotime($_POST["etime"]." 23:59:59");
-	$mysql->setQuery("select id,name,email,tel,company,product,country,url,team,subtime,deal_time,ip_add,message from ims_message where msg_status=3 and unix_timestamp(subtime) >= $start_time and unix_timestamp(subtime) <= $end_time");
+	$mysql->setQuery("select id,name,email,tel,company,product,country,http_referer,team,subtime,deal_time,ip_add,message from ims_message where msg_status=1 and unix_timestamp(subtime) >= $start_time and unix_timestamp(subtime) <= $end_time");
 	$rows = $mysql->getRows();
 	header('Content-Encoding: UTF-8');
 	header('Content-type:text/csv; charset=UTF-8');
@@ -36,7 +36,7 @@ if($_POST){
 	foreach($rows as $row){
 		$row = array_map("trim",$row);
 		$row = array_map("strip",$row);
-		echo $row['id'].",".$row['name'].",".$row['email'].",".$row['tel'].",".$row['company'].",".$row['product'].",".$row['country'].",".$row['url'].",".$row['team'].",".$row['subtime'].",".$row['deal_time'].",".$row['ip_add'].",".$row['message']."\n";
+		echo $row['id'].",".$row['name'].",".$row['email'].",".$row['tel'].",".$row['company'].",".$row['product'].",".$row['country'].",".$row['http_referer'].",".$row['team'].",".$row['subtime'].",".$row['deal_time'].",".$row['ip_add'].",".$row['message']."\n";
 	}
 	$accesslog->setlog("导出无效信息-> $start_time - $endtime");
 	exit();

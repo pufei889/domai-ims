@@ -38,4 +38,7 @@ $notice[7]['body']="Submit Failed, Database Error!";
 
 $notice[8]['title']="Submit Failed!";
 $notice[8]['body']="Submit Failed, Unknown error!";
+
+$notice[9]['title']="Submit Failed!";
+$notice[9]['body']="Submit Failed, Content violation!";
 ?>

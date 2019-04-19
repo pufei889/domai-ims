@@ -91,7 +91,7 @@ var $=myquery=(function(){
 			path="/";
 		}
 		if(domain==null){
-			domain=window.location.hostname;
+			domain=window.location.host;
 		}
 		now.setTime(now.getTime()+expired*1000);
 		document.cookie=name+"="+escape(value)+";expires="+now.toGMTString()+";path="+path+";domain="+domain;

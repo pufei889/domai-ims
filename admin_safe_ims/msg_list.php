@@ -20,37 +20,35 @@ $ulv=$_SESSION["ulv"];
 
 
 //获取需要进行筛分的参数
-
-$telephoneNum=isset($_GET["telephoneNum"]) ?"'%".(int)$_GET["telephoneNum"]."%'":"'%%'" ;
 $category=isset($_GET["query"])?$_GET["query"]:"all";//信息分类
 $page=isset($_GET["page"])?$_GET["page"]:1;//显示第几页的信息
 $pagesize=isset($_COOKIE["listsize"])?$_COOKIE["listsize"]:30;//每页显示的信息数量
 
 //加载信息类
 require_once("./msg.class.php");
-$msg=new Msg($telephoneNum,$category,$pagesize);
+$msg=new Msg($category,$pagesize);
 //信息列表
 $list=$msg->getlist(array("id","name","email","country","product","subtime","team","msg_status"),$page);
 //对信息列表中消息状态的数字进行转换
 foreach($list as $msg_list_single){
 	switch (trim($msg_list_single['msg_status'])){
 	case 0:
-		$msg_list_single['msg_status']="未处理";
+		$msg_list_single['msg_status']="<span class='px-1 text-white red'>未处理</span>";
 		break;
 	case 1:
-		$msg_list_single['msg_status']="有效";
+		$msg_list_single['msg_status']="<span class='px-1 green text-white'> <i class='fa fa-check-circle'></i> 有效</span>";
 		break;
 	case 2:
-		$msg_list_single['msg_status']="重复";
+		$msg_list_single['msg_status']="<span class='px-1 text-white red accent-1'><i class='fa fa-trash'></i> 重复</span>";
 		break;
 	case 3:
-		$msg_list_single['msg_status']="无效";
+		$msg_list_single['msg_status']="<span class='px-1 text-white red accent-1'><i class='fa fa-trash'></i> 无效</span>";
 		break;
 	case 9:
 		$msg_list_single['msg_status']="已删除";
 		break;
 	default:
-		$msg_list_single['msg_status']="未处理";
+		$msg_list_single['msg_status']="<span class='px-1 text-white red'>未处理</span>";
 	}
 	$msg_list[]=$msg_list_single;
 }
@@ -74,9 +72,6 @@ $smarty->assign("templateurl",$templateurl);
 $smarty->assign("msg_list",$msg_list);
 $smarty->assign("pageinfo",$pageinfo);
 $smarty->assign("ulv",$ulv);
-$smarty->assign("keywords",isset($_GET["telephoneNum"])?$_GET["telephoneNum"]:"");
-$smarty->assign("category",isset($_GET["query"])?$_GET["query"]:"");
 $smarty->display("msg_list.htm");
-
 
 ?>

@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>询盘管理</title>
+<link href="{$templateurl}/Foam/css/font-awesome.min.css" rel="stylesheet">
+<link href="{$templateurl}/Foam/css/mdb.min.css" rel="stylesheet">
+<link href="{$templateurl}/Foam/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{$templateurl}/style/admin.css"/>
-<script src="{$templateurl}/script/my.js"></script>
+<link href="{$templateurl}/Foam/css/modal-box.min.css" rel="stylesheet">
+<link href="{$templateurl}/Foam/css/style.min.css" rel="stylesheet">
+<script type="text/javascript" src="{$templateurl}/Foam/js/jquery-3.3.1.min.js"></script>
+<script src="{$templateurl}/Foam/js/modal-box.min.js"></script>
+<!--<script src="{$templateurl}/script/my.js"></script>-->
+
+
+
 <script>
 var i=0;
 function selectall(){
@@ -60,29 +70,37 @@ function deal_msg(action){
 		}
 	}
 }
-//点击列表到达信息页
-$.ready(function(){
-	var obj=document.getElementsByTagName("table")[0].getElementsByTagName("tr");
-	(function(){
-		for(var i=1;i<obj.length-2;i++){
-			obj[i].onclick=function(){
-				var id=this.getElementsByTagName("input")[0].value;
-				window.location="./msg.php?id="+id;
+
+	//点击列表到达信息页
+	/*
+	$.ready(function(){
+		var obj=document.getElementsByTagName("table")[0].getElementsByTagName("tr");
+		var boxMd = document.getElementById("my-modal");
+		console.log(obj);
+		(function(){
+			for(var i=1;i<obj.length-2;i++){
+				obj[i].onclick=function(){
+					var id=this.getElementsByTagName("input")[0].value;
+					//window.location="./msg.php?id="+id;<iframe src='./msg.php?id="+id+"></iframe>
+					
+					
+					boxMd.innerHTML = "123456";
+				}
+			}
+		})(i)
+			//取消table内input点击的事件冒泡
+			var inputobj=document.getElementsByTagName("table")[0].getElementsByTagName("input");
+		for(var i=1;i<inputobj.length;i++){
+			inputobj[i].onclick=function(e){
+				if(e && e.stopPropagation){
+					e.stopPropagation();
+				}else{
+					window.event.cancelBubble = true;
+				}
 			}
 		}
-	})(i)
-		//取消table内input点击的事件冒泡
-		var inputobj=document.getElementsByTagName("table")[0].getElementsByTagName("input");
-	for(var i=1;i<inputobj.length;i++){
-		inputobj[i].onclick=function(e){
-			if(e && e.stopPropagation){
-				e.stopPropagation();
-			}else{
-				window.event.cancelBubble = true;
-			}
-		}
-	}
-})
+	})
+*/
 </script>
 </head>
 <body style="padding-bottom:50px;">
@@ -90,24 +108,22 @@ $.ready(function(){
 <div class="title"><a href="javascript:window.top.location.reload()">首页</a> &gt; 信息管理</div>
 <div class="query">
 <form action="" method="get">
-	<input type="text" name="telephoneNum" placeholder="输入手机号码查询"style="width: 120px;cursor: inherit;background-color:#fff;height: 22px;width: 200px;" value="{$keywords}">
-	<select name="query">
-		<option>请选择</option>
-		<option {if $category eq 'no_deal'} selected {/if} value="no_deal">未处理</option>
-		<option {if $category eq 'dealed'} selected {/if} value="dealed">已处理</option>
-		<option {if $category eq 'right'} selected {/if} value="right">有效信息</option>
-		<option {if $category eq 'wrong'} selected {/if} value="wrong">无效信息</option>
-		<option {if $category eq 'repeat'} selected {/if} value="repeat">重复信息</option>
-		<option {if $category eq 'all'} selected {/if} value="all">所有记录</option>
+	<select name="query" class="browser-default custom-select">
+		<option value="all" selected="selected">所有记录</option>
+		<option value="no_deal">未处理</option>
+		<option value="dealed">已处理</option>
+		<option value="right">有效信息</option>
+		<option value="wrong">无效信息</option>
+		<option value="repeat">重复信息</option>
+		
 	</select>
-	<input type="submit" value="查询"/>
-</form>
+	<input class="btn btn-info btn-sm" type="submit" value="查询"/>
 </div>
-<table class="msg_list">
+<table class="msg_list table-hover">
 <tr><td><input type="checkbox" value="0" onclick="selectall()"/></td><td>ID</td><td>客户姓名</td><td>客户邮箱</td><td>国家</td><td>产品</td><td>提交时间</td><td>分组</td><td>状态</td></tr>
 
 {section name=list loop=$msg_list} 
-<tr class="message_list">
+<tr id="{$msg_list[list].id}" onclick="capture(this)" class="message_list open-modal"  >
 	<td><input type="checkbox" value="{$msg_list[list].id}"/></td>
 	<td>{$msg_list[list].id}</td>
 	<td>{$msg_list[list].name}</td>
@@ -133,6 +149,35 @@ $.ready(function(){
 </div></td>
 </tr>
 </table>
+
+
+<div id="my-modal">
+	
+	
+	
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $("#my-modal").wgModal({
+            triggerElement: '.open-modal',
+        });
+    });
+</script>
+
+<script>
+	function capture(data){
+　　	$('#my-modal>.wg-content').html("<iframe src=\"./msg.php?id="+data.id+"\" width=\"100%\" height=\"650px\" frameborder=\"0\" scrolling=\"yes\"></iframe>");
+	}
+</script>
+
+
+
+
+
+
+	
+	
 </body>
 </html>

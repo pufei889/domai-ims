@@ -47,11 +47,7 @@ class Mysql extends DB{
 		//连接数据库
 		$this->connect=mysqli_connect($host,$user,$password);
 		if($this->connect){
-			
-			if(!mysqli_query($this->connect,"SELECT * FROM information_schema.SCHEMATA where SCHEMA_NAME=$name;")){
-				mysqli_query($this->connect,"CREATE DATABASE `$name`;");
-			}
-			mysqli_query($this->connect,"set names $code");
+			mysqli_query($this->connect , "set names $code");
 			mysqli_select_db($this->connect,$name);
 		}else{
 			$this->errorcode=7;
@@ -66,7 +62,7 @@ class Mysql extends DB{
 
 	//执行不需要结果的sql:insert update
 	public function query(){
-		mysqli_query($this->connect,$this->queryString);
+		$reup = mysqli_query($this->connect,$this->queryString);
 		if(mysqli_error($this->connect)){
 			$this->errorcode=7;
 		}
@@ -88,7 +84,7 @@ class Mysql extends DB{
 	public function getOne(){
 		$re=mysqli_query($this->connect,$this->queryString);
 		$res=mysqli_fetch_row($re);
-		if(mysqli_error()){
+		if(mysqli_error($this->connect)){
 			$this->errorcode=7;
 			return;
 		}else{

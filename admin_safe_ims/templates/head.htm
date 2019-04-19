@@ -4,9 +4,16 @@
 <meta charset="UTF-8">
 <title>哆麦外贸询盘管理系统</title>
 <meta name="author" content="www.hitoy.org"/>
+<link href="{$templateurl}/Foam/css/font-awesome.min.css" rel="stylesheet">
+<link href="{$templateurl}/Foam/css/bootstrap.min.css" rel="stylesheet">
+<link href="{$templateurl}/Foam/css/mdb.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{$templateurl}/style/main.css"/>
+<link href="{$templateurl}/Foam/css/style.min.css" rel="stylesheet">
 <link rel="icon" href="{$templateurl}/image/favicon.ico" />
 <script src="{$templateurl}/script/my.js"></script>
+<script type="text/javascript" src="{$templateurl}/Foam/js/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">var $f = $.noConflict(true);</script>
 <script>
 //系统通知
 $.ready(function(){
@@ -37,10 +44,33 @@ $.ready(function(){
 </script>
 </head>
 <body>
-<div class="head">
+<div class="head z-depth-1">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-6">
+				<div class="logos py-3">
+					<a href="#" onclick="window.location.reload();return false;">
+					哆麦 | DoMai
+					</a>
+				</div>
+				
+					<!--<img src="{$templateurl}/image/managelog.gif" alt="Logo" id="logo"/></a>-->
+			</div>
+			<div class="col-6">
+				<div class="float-right py-3 users">
+					您好:{$user}, 欢迎进入哆麦外贸询盘管理系统! <a href="./exit.php" class="logout">[注销]</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<!--	
 <a href="#" onclick="window.location.reload();return false;"><img src="{$templateurl}/image/managelog.gif" alt="Logo" id="logo"/></a>
-<div class="wel">您好:{$user}, 欢迎进入哆麦外贸询盘管理系统! <a href="./exit.php" class="logout">[注销]</a></div>
+<div class="wel">您好:{$user}, 欢迎进入哆麦外贸询盘管理系统! <a href="./exit.php" class="logout">[注销]</a>
+	
+</div>
 <div class="menu">
+	
 <ul class="nav">
 <li class="selected" onclick="$.selectnav(this,'selected');window.main.location='./index_body.php';">首 页</li>
 <li onclick="$.selectnav(this,'selected');window.main.location='./sys_setting.php';">系统配置</li>
@@ -52,6 +82,8 @@ $.ready(function(){
 <li><a href="./recycle.php" target="main">回收站</a></li>
 <li><a href="./user_do.php?action=add" target="main">添加用户</a></li>
 <li><a href="./msg_list.php" target="main">信息管理</a></li>
-<!--<li><a href="./sys_setting.php" target="main">登陆权限</a></li>-->
+<li><a href="./sys_setting.php" target="main">登陆权限</a></li>
 </ul>
+</div>-->
+
 </div>

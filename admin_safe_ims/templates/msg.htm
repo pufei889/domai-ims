@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>信息管理</title>
+<link href="{$templateurl}/Foam/css/font-awesome.min.css" rel="stylesheet">
+<link href="{$templateurl}/Foam/css/mdb.min.css" rel="stylesheet">
+<link href="{$templateurl}/Foam/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{$templateurl}/style/admin.css"/>
+<link href="{$templateurl}/Foam/css/style.min.css" rel="stylesheet">
 <script src="{$templateurl}/script/my.js"></script>
 <script>
 	//ajax 处理信息
@@ -76,18 +80,18 @@
 <body style="padding-bottom:50px">
 <div class="msg_admin">
 <div class="title"><a href="javascript:window.top.location.reload()">首页</a> &gt; <a href="./msg_list.php">信息管理</a></div>
-<table class="msgbox">
+<table class="msgbox table-hover">
 	<tr>
 		<td>客户姓名</td><td>{$name}</td>
 		<td>提交时间</td><td>{$subtime}</td>
 	</tr>
 	<tr>
 		<td>国家(用户填写)</td><td>{$country}</td>
-		<td>来源</td><td>{$url}</td>
+		<td>来源</td><td><a href="{$url}" target="_blank">{$url}</a></td>
 	</tr>
 	<tr>
 		<td>客户邮箱</td><td>{$email}</td>
-		<td>真实来源</td><td>{$referer}</td>
+		<td>真实来源</td><td><a href="{$referer}" target="_blank">{$referer}</a></td>
 	</tr>
 	<tr>
 		<td>客户电话</td><td>{$tel}</td>
@@ -107,7 +111,7 @@
 	</tr>
 	<tr class="mainbox">
 		<td style="padding-left:10px">消息内容</td>
-		<td colspan="3"><textarea>{$message}</textarea></td>
+		<td colspan="3"><textarea class="form-control">{$message}</textarea></td>
 	</tr>
 	<form action="" method="POST" onsubmit="return deal_msg()">
 	<tr>
@@ -117,7 +121,7 @@
 		<input type="radio" name="action" value="repeat"/>重复 
 		{if $ulv eq 1}<input type="radio" name="action" value="del"/>删除{/if}
 		<input type="hidden" name="id" value="{$id}"/>
-		<input type="submit" value="确认处理" class="btn"/>
+		<input type="submit" value="确认处理" class="btn btn-info btn-sm"/>
 		<a href="javascript:window.location='./msg_list.php';" class="goback">返回上一页</a></td>
 	</tr>
 	<tr>

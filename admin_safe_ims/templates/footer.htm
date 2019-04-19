@@ -1,6 +1,29 @@
 <div class="footer">
 	<div id="copy">哆麦外贸询盘管理系统</div>
-	<div id="author">Author <a href="https://www.hitoy.org/" rel="author" target="_blank">Hito</a></div>
+	<div id="author">Author <a style="color: red;" href="https://www.hitoy.org/" rel="author" target="_blank">Hito</a> Desgin by <a href="//www.5zzu.com" target="_blank">Foam</a></div>
 </div>
+
+
+
+    <script type="text/javascript" src="{$templateurl}/Foam/js/popper.min.js"></script>
+
+    <script type="text/javascript" src="{$templateurl}/Foam/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="{$templateurl}/Foam/js/mdb.min.js"></script>
+	<script type="text/javascript">
+		 $f(document).ready(function() {
+		     $f(".tab li").click(function() {
+		         $f(".tab li").eq($f(this).index()).addClass("selected").siblings().removeClass('selected');
+		         //$("div").hide().eq($(this).index()).show();
+		         //另一种方法: $("div").eq($(".tab li").index(this)).addClass("on").siblings().removeClass('on'); 
+		
+		     });
+		 });
+	</script>
+	
+	
+	
+
+	
 </body>
 </html>

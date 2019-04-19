@@ -33,7 +33,7 @@ ul {list-style:none}
 /**系统设置页面**/
 .sing_count {width:90%;margin-top:10px;}
 .sing_count #setting {margin:30px 50px;}
-.sing_count #setting button {background:#2e89c5;background:-webkit-linear-gradient(top,#2a96d8 0%,#257db9 90%,#2e89c5 100%);border:1px solid #1d567d;color:#fff;height:22px;width:50px;border-radius:5px;cursor:pointer;margin-left:20px}
+/*.sing_count #setting button {background:#2e89c5;background:-webkit-linear-gradient(top,#2a96d8 0%,#257db9 90%,#2e89c5 100%);border:1px solid #1d567d;color:#fff;height:22px;width:50px;border-radius:5px;cursor:pointer;margin-left:20px}*/
 .ipcontrl {width:90%;margin-top:10px;}
 .ipcontrl p {margin:20px;}
 .ipcontrl form {width:500px;height:300px;margin-left:20px}
@@ -50,9 +50,9 @@ ul {list-style:none}
 .user_admin table.user_mod {width:600px;;border-collapse:collapse;margin-top:10px;}
 .user_admin table.user_mod td {border:1px solid #cbe0f3;height:40px;text-align:center}
 .user_admin table.user_mod tr:nth-child(odd) {background:#f1f7fd}
-.user_admin table.user_mod  input {width:200px;height:20px;line-height:20px}
+/*.user_admin table.user_mod  input {width:200px;height:20px;line-height:20px}*/
 .user_admin table.user_mod .butn {width:75px;height:28px;background:url(../image/submit.png) no-repeat;border:none;cursor:pointer;margin-left:20px;outline:none}
-.user_admin table.user_mod select {width:200px;height:20px;line-height:20px}
+/*.user_admin table.user_mod select {width:200px;height:20px;line-height:20px}*/
 /**信息管理**/
 .msg_admin {width:90%;margin-top:10px;}
 .msg_admin .title {color:#0056b5;font-size:12px;font-weight:normal;width:99%;padding-left:1%}
@@ -89,7 +89,7 @@ ul {list-style:none}
 .msg_admin table.msgbox tr.mainbox td{height:200px;padding:0}
 .msg_admin table.msgbox tr.mainbox  textarea {width:99%;height:90%;margin-top:10px;margin-left:10px;border:none;outline:none}
 .msg_admin table.msgbox tr input {margin-left:10px}
-.msg_admin table.msgbox tr .btn {width:75px;height:29px;background:url(../image/msg_process.png) no-repeat;border:none;cursor:pointer;margin-left:30%}
+/*.msg_admin table.msgbox tr .btn {width:75px;height:29px;background:url(../image/msg_process.png) no-repeat;border:none;cursor:pointer;margin-left:30%}*/
 .msg_admin table.msgbox tr .goback{float:right;margin-right:50px}
 .msg_admin table.msgbox tr #checkip {margin-left:20px}
 .msg_admin table.msgbox .next_article {float:right;margin-right:50px}
@@ -110,5 +110,6 @@ ul {list-style:none}
 .recycle_admin table.recyle td.deal #page {float:right;margin-right:10px;}
 .recycle_admin table.recyle td.selectbar {text-align:left;padding:5px 20px}
 /**内容导出**/
-#setting form.export input {height:25px;line-height:25px;}
+#setting form.export input {height:25px;}
 #setting form.export input#submit {width:120px;margin-left:20px;cursor:pointer}
+.w20{width: 20%;}
