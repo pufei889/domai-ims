@@ -1,3 +1,8 @@
 install/install.lock
 .project
 config.php
+templates/templates_compile
+caches
+admin_safe_ims/logs
+admin_safe_ims/session
+admin_safe_ims/templates_c
