@@ -1,0 +1,38 @@
+Create table ims_message(
+	id int auto_increment not null,
+	name char(100) not null,
+	email char(100) not null,
+	tel char(50),
+	message text not null,
+	company char(200),
+	product char(255),
+	country char(50),
+	url char(255),
+	lang char(10),
+	team char(20) default "Zhengzhou",
+	subtime DATETIME default "1988-04-25 00:00:00",
+	msg_status tinyint unsigned default 0,	
+	deal_person char(50),
+	deal_time DATETIME default "1988-04-25 00:00:00",
+	ip_add char(50) not null,
+	http_referer char(255),
+	user_agent char(255),
+	PRIMARY KEY(id),
+    index name_val(name),
+    index email_val(email),
+    FULLTEXT  index msg_val(message),
+    index msg_status_val(msg_status)
+)engine=myisam DEFAULT CHARSET=utf8;
+Create table ims_user(
+	id int auto_increment not null,
+	username char(20) not null unique,
+	password char(40) not null,
+	current_stat char(10) default "offline",
+	userleve tinyint unsigned not null default 1,
+	nickname char(10) not null,
+	lastlogin DATETIME default "1988-04-25 00:00:00",
+	lastlogip char(50) not null default "0.0.0.0",
+	logcount int not null default 1,
+    sessionid char(100) default "",
+	PRIMARY KEY(id)
+)engine=myisam DEFAULT CHARSET=utf8;
